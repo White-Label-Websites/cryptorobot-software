@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a Crypto Trading Bot (Step by Step, No Real Money)</title>
+<meta name="description" content="Build your first crypto trading bot in six steps: pick a market, write the rules, set the risk limits, code or configure it, backtest it, then run it on live prices with virtual money.">
+<link rel="canonical" href="https://cryptorobot.software/how-to-build-a-crypto-trading-bot/">
+<meta property="og:title" content="How to Build a Crypto Trading Bot (Step by Step, No Real Money)">
+<meta property="og:description" content="Build your first crypto trading bot in six steps: pick a market, write the rules, set the risk limits, code or configure it, backtest it, then run it on live prices with virtual money.">
+<meta property="og:url" content="https://cryptorobot.software/how-to-build-a-crypto-trading-bot/">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#0d1612">
+<link rel="preload" href="/assets/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "How to build a crypto trading bot: a step-by-step guide for beginners", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "author": {"@type": "Organization", "name": "Crypto Robot"}, "publisher": {"@type": "Organization", "name": "Crypto Robot"}, "mainEntityOfPage": "https://cryptorobot.software/how-to-build-a-crypto-trading-bot/"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I build a crypto trading bot without coding?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. No-code bot builders let you set entry, exit and risk rules from menus. AI assistants can also turn plain-English rules into code, which you should still read and test."}}, {"@type": "Question", "name": "What programming language is best for a trading bot?", "acceptedAnswer": {"@type": "Answer", "text": "Python is the most common choice: it has libraries for exchange connections, indicators and backtesting, and plenty of examples."}}, {"@type": "Question", "name": "How much money do I need to start a trading bot?", "acceptedAnswer": {"@type": "Answer", "text": "None to start. Build and test it on live prices with virtual money first. Only consider real money once the bot has survived several weeks under hard loss limits."}}, {"@type": "Question", "name": "Is a crypto trading bot profitable?", "acceptedAnswer": {"@type": "Answer", "text": "Some are, many are not. Profit depends on the strategy, the costs and the risk rules, which is why forward testing on virtual money matters before anything else."}}]}
+</script>
+</head>
+<body>
+<div class="wrap top">
+  <a class="mark" href="/"><i aria-hidden="true"></i>Crypto Robot</a>
+  <nav aria-label="Main"><a href="/#rules">The rules</a><a class="hide-sm" href="/how-to-build-a-crypto-trading-bot/" aria-current="page">Build a bot</a><a href="/contact/">Contact</a></nav>
+</div>
+
+<main class="page">
+  <div class="wrap">
+    <p class="kicker">Guide</p>
+    <h1>How to build a crypto trading bot: a step-by-step guide for beginners</h1>
+    <p class="updated">Last updated: 3 October 2026</p>
+    <div class="prose">
+      <p>A crypto trading bot is a program that buys and sells for you according to rules you set. It does not get tired, scared or greedy, and it does exactly what you told it to, including your mistakes. Building one is less about code than about writing rules precise enough for a machine to follow. This guide walks through the whole process, from the first idea to a bot running on live prices with virtual money.</p>
+      <h2>What a trading bot is made of</h2>
+      <p>Every bot, from a weekend script to a hedge-fund system, has the same four parts:</p>
+      <ul>
+        <li><strong>Data.</strong> The prices the bot watches: candles of 1 minute, 1 hour or 1 day.</li>
+        <li><strong>Signal.</strong> The condition that triggers a trade, for example &ldquo;the 20-hour average crosses above the 50-hour average&rdquo;.</li>
+        <li><strong>Risk rules.</strong> How much to put on each trade, where to cut a loss, and when to stop trading for the day.</li>
+        <li><strong>Execution.</strong> The part that actually places orders on an exchange or a simulator.</li>
+      </ul>
+      <p>Beginners spend most of their time on the signal. The risk rules decide whether the bot survives.</p>
+      <h2>Step 1: pick one market and one timeframe</h2>
+      <p>Start with a single pair, such as BTC/USD or ETH/USD, and a single candle size. Bitcoin on 1-hour candles is a reasonable first choice: liquid, closely watched and not as noisy as 1-minute data. Adding coins and timeframes later is easy. Debugging five at once is not.</p>
+      <h2>Step 2: write the rules in plain sentences</h2>
+      <p>Before any code, write the strategy as if you were explaining it to a friend. Every rule must be testable with a yes or no.</p>
+      <ul>
+        <li><strong>Entry:</strong> buy when the RSI(14) closes below 30 and the price is above the 200-hour average.</li>
+        <li><strong>Exit:</strong> sell when the RSI closes above 55, or after 48 hours, whichever comes first.</li>
+        <li><strong>Stop:</strong> sell if the trade is down 3%.</li>
+      </ul>
+      <p>If a sentence contains &ldquo;usually&rdquo;, &ldquo;roughly&rdquo; or &ldquo;when it looks strong&rdquo;, it is not a rule yet.</p>
+      <h2>Step 3: set the risk limits before anything else</h2>
+      <p>Decide the size of each trade from the loss you accept, not from the gain you hope for. A common starting point is to risk 1% of the balance per trade. With a 3% stop, that means a position of about a third of the balance. Add two account-level brakes: a daily loss limit that stops the bot for the day, and a maximum drawdown that switches it off until you review it.</p>
+      <h2>Step 4: code it or configure it</h2>
+      <p>You have three routes:</p>
+      <table>
+        <thead><tr><th>Route</th><th>Skills needed</th><th>Good for</th></tr></thead>
+        <tbody>
+          <tr><td>Python with an exchange library</td><td>Basic programming</td><td>Full control, any strategy</td></tr>
+          <tr><td>Open-source bot framework</td><td>Some programming, setup on a server</td><td>Ready-made backtesting and order handling</td></tr>
+          <tr><td>No-code bot builder</td><td>None</td><td>Testing simple rule sets quickly</td></tr>
+        </tbody>
+      </table>
+      <p>AI assistants can turn your plain-English rules into code. Read what they write, line by line: they make confident mistakes, and the bot will repeat them every time. Our guide to the <a href="/chatgpt-trading-bot/">ChatGPT trading bot</a> covers this in detail.</p>
+      <h2>Step 5: backtest to throw out bad ideas</h2>
+      <p>A backtest runs the rules over past prices. It is fast and it kills weak ideas early. It also flatters: tweak the parameters enough and any strategy looks great on the past. Keep the parameters round and few, test on a period you did not use to design the rules, and include trading fees.</p>
+      <h2>Step 6: run it forward on live prices, with virtual money</h2>
+      <p>The real test is the future. Run the bot on live prices with a virtual balance and hard limits for a few weeks. That is what Crypto Robot is built for: your bot starts with a virtual $10,000 on live crypto prices and has to clear three levels.</p>
+      <table>
+        <thead><tr><th>Level</th><th>Target</th><th>Min. days</th><th>Max. days</th><th>Max. drawdown</th><th>Daily drawdown</th></tr></thead>
+        <tbody>
+          <tr><td>Level 1</td><td>+10%</td><td>5</td><td>10</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 2</td><td>+5%</td><td>5</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 3</td><td>+5%</td><td>None</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+        </tbody>
+      </table>
+      <p>Breaking the -5% daily drawdown or the -10% maximum drawdown ends the run, and you see exactly which day and which trades did it.</p>
+      <h2>A checklist before you trust a bot</h2>
+      <ol>
+        <li>Every rule is written down and testable.</li>
+        <li>Position size comes from the stop, not from a hunch.</li>
+        <li>A daily loss limit stops the bot automatically.</li>
+        <li>The backtest includes fees and a period not used for design.</li>
+        <li>The bot has survived several weeks forward on live prices without breaking a limit.</li>
+      </ol>
+      <h2>Frequently asked questions</h2>
+      <h3>Can I build a crypto trading bot without coding?</h3>
+      <p>Yes. No-code bot builders let you set entry, exit and risk rules from menus. AI assistants can also turn plain-English rules into code, which you should still read and test.</p>
+      <h3>What programming language is best for a trading bot?</h3>
+      <p>Python is the most common choice: it has libraries for exchange connections, indicators and backtesting, and plenty of examples.</p>
+      <h3>How much money do I need to start a trading bot?</h3>
+      <p>None to start. Build and test it on live prices with virtual money first. Only consider real money once the bot has survived several weeks under hard loss limits.</p>
+      <h3>Is a crypto trading bot profitable?</h3>
+      <p>Some are, many are not. Profit depends on the strategy, the costs and the risk rules, which is why forward testing on virtual money matters before anything else.</p>
+      <div class="page-cta">
+        <p>Built a bot? Put it on live prices with virtual money.</p>
+        <a class="btn" href="/#start">Build my first bot <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <h2>Related guides</h2>
+      <ul><li><a href="/ai-crypto-trading-bot/">AI crypto trading bots explained</a></li><li><a href="/chatgpt-trading-bot/">ChatGPT trading bot guide</a></li><li><a href="/crypto-trading-bot-strategies/">Crypto trading bot strategies</a></li></ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/how-to-build-a-crypto-trading-bot/">How to build a crypto trading bot</a><a href="/ai-crypto-trading-bot/">AI crypto trading bots explained</a><a href="/chatgpt-trading-bot/">ChatGPT trading bot guide</a><a href="/crypto-trading-bot-strategies/">Crypto trading bot strategies</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <span>&copy; 2026 Crypto Robot</span>
+    <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
+  </div>
+</footer>
+</body>
+</html>

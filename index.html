@@ -1,12 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Bitcoin Era | Trading Challenges</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Trading Bot Simulator: Test Your Bot Free | Crypto Robot</title>
+<meta name="description" content="Test your crypto trading bot for free on live market prices with a virtual $10,000. Three levels, fixed drawdown limits, no card and no deposit.">
+<link rel="canonical" href="https://cryptorobot.software/">
+<meta property="og:title" content="Test your crypto trading bot for free">
+<meta property="og:description" content="Run your crypto bot on live prices with a virtual $10,000 and see if it clears three levels.">
+<meta property="og:url" content="https://cryptorobot.software/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0d1612">
+<link rel="preload" href="/assets/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. You can set up a bot from simple rules. If you already code your own bots, you can test the same logic here on live prices."}},
+{"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Signing up asks for no card, no deposit and no payment of any kind."}},
+{"@type":"Question","name":"Is any real money traded?","acceptedAnswer":{"@type":"Answer","text":"No. Every bot trades a virtual balance of $10,000. Prices come from live crypto markets, the money does not."}},
+{"@type":"Question","name":"Why are there drawdown limits?","acceptedAnswer":{"@type":"Answer","text":"A bot that wins big once and then loses half the account is not a good bot. The -5% daily and -10% maximum drawdown limits reward strategies that stay under control."}},
+{"@type":"Question","name":"What happens when my bot breaks a limit?","acceptedAnswer":{"@type":"Answer","text":"The run ends immediately. You can see which day and which trades caused it, adjust the strategy and start a new bot."}}
+]}
+</script>
 </head>
-<body style="margin:0">
-<div class="wl-app" style="position:absolute;width:100%;height:100%;"></div>
+<body>
+<div class="wrap top">
+  <a class="mark" href="/"><i aria-hidden="true"></i>Crypto Robot</a>
+  <nav aria-label="Main"><a href="#rules">The rules</a><a class="hide-sm" href="/how-to-build-a-crypto-trading-bot/">Build a bot</a><a href="/contact/">Contact</a></nav>
+</div>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow rise"><b>Free</b> Crypto trading bot simulator</p>
+      <h1 class="rise d1">Your crypto trading bot, <em>tested on live prices.</em></h1>
+      <p class="lede rise d2">Crypto Robot runs your trading bot on real-time crypto prices with a virtual $10,000. Same rules for every bot: hit the target, stay inside the drawdown limits, and climb three levels.</p>
+      <ul class="ticks rise d3">
+        <li><div>Live market prices <span>from the first minute</span></div></li>
+        <li><div>Virtual $10,000 <span>no card, no deposit</span></div></li>
+        <li><div>Hard risk limits <span>-5% per day, -10% overall</span></div></li>
+      </ul>
+    </div>
+    <div class="signup rise d4" id="start">
+      <header>
+        <h2>Launch your first bot</h2>
+        <p>Free account. No real money, ever.</p>
+      </header>
+      <div class="wl-signup"></div>
+    </div>
+  </div>
+</section>
+
+<section class="preview" aria-labelledby="preview-title">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Bot dashboard</p>
+      <h2 class="sec" id="preview-title">See every trade your bot makes</h2>
+      <p class="sec-p">Balance, profit and loss, distance to the limits and trading days completed, updated as the market moves.</p>
+    </div>
+    <article class="bot" aria-label="Example bot card">
+      <div class="bot-head">
+        <div class="bot-name">RSI Grid ETH<small>Level 1 &middot; example</small></div>
+        <span class="badge">Active</span>
+      </div>
+      <dl class="stats">
+        <div><dt>Balance</dt><dd>$10,410</dd></div>
+        <div><dt>PnL</dt><dd class="up">+4.1%</dd></div>
+        <div><dt>Target</dt><dd>+10%</dd></div>
+      </dl>
+      <div class="gauge-label"><span>-10%</span><span>0</span><span>+10%</span></div>
+      <div class="gauge" role="img" aria-label="PnL at +4.1% on a scale from -10% to +10%"><i style="left:calc(50% + 20.5%)"></i></div>
+      <div class="gauge-legend"><span>Max loss</span><span>Target</span></div>
+      <div class="days" aria-label="2 of 5 minimum trading days completed"><b class="on"></b><b class="on"></b><b></b><b></b><b></b><span>2/5 days</span></div>
+    </article>
+  </div>
+</section>
+
+<section class="steps wrap" aria-labelledby="how-title">
+  <div class="steps-head">
+    <div>
+      <p class="kicker">How it works</p>
+      <h2 class="sec" id="how-title">From strategy to verdict</h2>
+    </div>
+  </div>
+  <ol>
+    <li><h3>Set up your bot</h3><p>Choose a market and the rules for entering and leaving trades. A <a href="/crypto-trading-bot-strategies/">grid, trend or mean-reversion</a> idea is enough to start.</p></li>
+    <li><h3>Let it trade live prices</h3><p>The bot runs on real-time crypto prices with a virtual $10,000, and every limit is checked for you.</p></li>
+    <li><h3>Climb or rebuild</h3><p>Reach the target to unlock the next level. Break a limit and the run shows where the strategy failed.</p></li>
+  </ol>
+</section>
+
+<section class="rules" id="rules" aria-labelledby="rules-title">
+  <div class="wrap">
+    <p class="kicker">The rules</p>
+    <h2 class="sec" id="rules-title">Three levels, the same limits</h2>
+    <p class="sec-p">The targets shrink as you climb. The limits never move, so a steady bot beats a lucky one.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Level</th><th scope="col">Target</th><th scope="col">Min. days</th><th scope="col">Max. days</th><th scope="col">Max. drawdown</th><th scope="col">Daily drawdown</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Level 1<small>First proof</small></th><td class="t">+10%</td><td>5</td><td>10</td><td class="r">-10%</td><td class="r">-5%</td></tr>
+          <tr><th scope="row">Level 2<small>Repeat it</small></th><td class="t">+5%</td><td>5</td><td class="n">No limit</td><td class="r">-10%</td><td class="r">-5%</td></tr>
+          <tr><th scope="row">Level 3<small>Keep it steady</small></th><td class="t">+5%</td><td class="n">None</td><td class="n">No limit</td><td class="r">-10%</td><td class="r">-5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="breach" role="note"><span aria-hidden="true">&#9888;</span><span><strong>Hard stop.</strong> Breaking the daily or the maximum drawdown ends the run immediately.</span></p>
+    <p class="sec-cta"><a class="btn" href="#start">Test my bot for free <span aria-hidden="true">&rarr;</span></a> <a class="more" href="/how-to-build-a-crypto-trading-bot/">How to build a crypto trading bot</a></p>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Questions</p>
+      <h2 class="sec" id="faq-title">Before you launch</h2>
+    </div>
+    <div>
+      <details open><summary>Do I need to know how to code?</summary><p>No. You can set up a bot from simple rules. If you already code your own bots, you can test the same logic here on live prices.</p></details>
+      <details open><summary>Is it really free?</summary><p>Yes. Signing up asks for no card, no deposit and no payment of any kind.</p></details>
+      <details open><summary>Is any real money traded?</summary><p>No. Every bot trades a virtual balance of $10,000. Prices come from live crypto markets, the money does not.</p></details>
+      <details open><summary>Why are there drawdown limits?</summary><p>A bot that wins big once and then loses half the account is not a good bot. The -5% daily and -10% maximum drawdown limits reward strategies that stay under control.</p></details>
+      <details open><summary>What happens when my bot breaks a limit?</summary><p>The run ends immediately. You can see which day and which trades caused it, adjust the strategy and start a new bot.</p></details>
+      <details><summary>Can I test a bot written with ChatGPT or another AI?</summary><p>Yes. Read our guides on the <a href="/chatgpt-trading-bot/">ChatGPT trading bot</a> and <a href="/ai-crypto-trading-bot/">AI crypto trading bots</a>, then run yours here.</p></details>
+      <details><summary>Who runs this site?</summary><p>An independent publisher. Details are in our <a href="/legal-notice/">legal notice</a>, and you can reach us through the <a href="/contact/">contact page</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Find out if your bot holds up.</h2>
+    <a class="btn" href="#start">Launch my bot <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/how-to-build-a-crypto-trading-bot/">How to build a crypto trading bot</a><a href="/ai-crypto-trading-bot/">AI crypto trading bots explained</a><a href="/chatgpt-trading-bot/">ChatGPT trading bot guide</a><a href="/crypto-trading-bot-strategies/">Crypto trading bot strategies</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <span>&copy; 2026 Crypto Robot</span>
+    <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 <script src="https://affcoin.com/products/scripts/732/" defer></script>
 </body>
 </html>

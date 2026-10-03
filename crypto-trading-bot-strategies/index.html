@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Trading Bot Strategies: Grid, DCA, Trend, Mean Reversion</title>
+<meta name="description" content="The five strategies most crypto trading bots use, when each one works, when it fails, and the risk rules that keep a bot alive in every market.">
+<link rel="canonical" href="https://cryptorobot.software/crypto-trading-bot-strategies/">
+<meta property="og:title" content="Crypto Trading Bot Strategies: Grid, DCA, Trend, Mean Reversion">
+<meta property="og:description" content="The five strategies most crypto trading bots use, when each one works, when it fails, and the risk rules that keep a bot alive in every market.">
+<meta property="og:url" content="https://cryptorobot.software/crypto-trading-bot-strategies/">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#0d1612">
+<link rel="preload" href="/assets/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "Crypto trading bot strategies: grid, DCA, trend and mean reversion explained", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "author": {"@type": "Organization", "name": "Crypto Robot"}, "publisher": {"@type": "Organization", "name": "Crypto Robot"}, "mainEntityOfPage": "https://cryptorobot.software/crypto-trading-bot-strategies/"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the best crypto trading bot strategy?", "acceptedAnswer": {"@type": "Answer", "text": "There is no single best one. Grid bots suit ranges, trend bots suit long moves, mean reversion suits markets that snap back. The best choice fits the current market and comes with strict loss limits."}}, {"@type": "Question", "name": "Are grid bots profitable?", "acceptedAnswer": {"@type": "Answer", "text": "In sideways markets they often earn small, steady gains. When price breaks out of the range they can lose much more, so a lower bound and a stop are essential."}}, {"@type": "Question", "name": "What risk per trade should a bot use?", "acceptedAnswer": {"@type": "Answer", "text": "Many traders risk between 0.5% and 2% of the balance per trade, so a losing streak does not break the daily or the maximum loss limit."}}, {"@type": "Question", "name": "How do I test a strategy without risking money?", "acceptedAnswer": {"@type": "Answer", "text": "Backtest it on past data, then run it forward on live prices with a virtual balance. Crypto Robot gives every bot a virtual $10,000 for free."}}]}
+</script>
+</head>
+<body>
+<div class="wrap top">
+  <a class="mark" href="/"><i aria-hidden="true"></i>Crypto Robot</a>
+  <nav aria-label="Main"><a href="/#rules">The rules</a><a class="hide-sm" href="/how-to-build-a-crypto-trading-bot/">Build a bot</a><a href="/contact/">Contact</a></nav>
+</div>
+
+<main class="page">
+  <div class="wrap">
+    <p class="kicker">Guide</p>
+    <h1>Crypto trading bot strategies: grid, DCA, trend and mean reversion explained</h1>
+    <p class="updated">Last updated: 3 October 2026</p>
+    <div class="prose">
+      <p>Most crypto trading bots run one of a handful of strategies. Each one makes money in a certain kind of market and loses in another. Picking a strategy is less about finding the best one than about knowing when yours breaks, and putting a limit in place before it does.</p>
+      <h2>The five common strategies at a glance</h2>
+      <table>
+        <thead><tr><th>Strategy</th><th>Works when</th><th>Fails when</th></tr></thead>
+        <tbody>
+          <tr><td>Grid</td><td>Price moves sideways in a range</td><td>Price breaks out of the range</td></tr>
+          <tr><td>DCA</td><td>Price recovers after a fall</td><td>Price keeps falling</td></tr>
+          <tr><td>Trend following</td><td>Long, clear moves up or down</td><td>Choppy, directionless markets</td></tr>
+          <tr><td>Mean reversion</td><td>Price snaps back after extremes</td><td>A strong trend starts</td></tr>
+          <tr><td>Breakout</td><td>Volatility expands after a quiet period</td><td>False breakouts that reverse</td></tr>
+        </tbody>
+      </table>
+      <h2>Grid bots</h2>
+      <p>A grid bot places buy orders below the price and sell orders above it, at regular steps. Every bounce inside the range earns a small profit. The danger is a breakout: if the price falls through the bottom of the grid, the bot ends up holding coins bought on the way down. Set a lower bound below which the bot stops buying.</p>
+      <h2>DCA bots</h2>
+      <p>Dollar-cost averaging buys a fixed amount at set intervals or after each drop, lowering the average entry price. It suits long-term accumulation. As a trading strategy, it can turn a small loss into a large one if the market keeps falling. Cap the number of extra buys and the total exposure.</p>
+      <h2>Trend-following bots</h2>
+      <p>These buy strength and sell weakness, often with moving-average crosses or breakouts of recent highs. They lose small amounts often and win big occasionally. They need patience and a stop on every trade, because the losing streaks in a sideways market can be long.</p>
+      <h2>Mean-reversion bots</h2>
+      <p>These bet that extremes do not last: buy when the RSI is very low, sell when it is very high. They win often, in small amounts. The risk is the trend that does not revert, which is why a hard stop matters more here than anywhere else.</p>
+      <h2>Breakout bots</h2>
+      <p>A breakout bot waits for a quiet range, then trades the move when price leaves it. It catches the start of big moves and suffers from false starts. Filters such as volume or a close outside the range reduce, but never remove, the false signals.</p>
+      <h2>The rules every strategy needs</h2>
+      <ul>
+        <li><strong>A stop on every trade</strong>, or a maximum holding time.</li>
+        <li><strong>A position size</strong> derived from that stop, typically 0.5% to 2% of the balance at risk.</li>
+        <li><strong>A daily loss limit</strong> that switches the bot off for the day.</li>
+        <li><strong>A maximum drawdown</strong> that switches it off until you review it.</li>
+      </ul>
+      <h2>How to choose and test a strategy</h2>
+      <ol>
+        <li>Look at the market you want to trade. Ranging or trending over the last months?</li>
+        <li>Pick the strategy that fits, and write its rules down.</li>
+        <li>Backtest it with fees, then run it forward on live prices with virtual money.</li>
+        <li>Note the worst day. If it is close to your limit, cut the position size.</li>
+      </ol>
+      <p>Crypto Robot runs that last step for you. Your bot gets a virtual $10,000 on live prices and three levels to clear:</p>
+      <table>
+        <thead><tr><th>Level</th><th>Target</th><th>Min. days</th><th>Max. days</th><th>Max. drawdown</th><th>Daily drawdown</th></tr></thead>
+        <tbody>
+          <tr><td>Level 1</td><td>+10%</td><td>5</td><td>10</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 2</td><td>+5%</td><td>5</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 3</td><td>+5%</td><td>None</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+        </tbody>
+      </table>
+      <p>Since the -5% daily and -10% maximum drawdown never change, a strategy that only works in one kind of market shows its weakness quickly.</p>
+      <h2>Frequently asked questions</h2>
+      <h3>What is the best crypto trading bot strategy?</h3>
+      <p>There is no single best one. Grid bots suit ranges, trend bots suit long moves, mean reversion suits markets that snap back. The best choice fits the current market and comes with strict loss limits.</p>
+      <h3>Are grid bots profitable?</h3>
+      <p>In sideways markets they often earn small, steady gains. When price breaks out of the range they can lose much more, so a lower bound and a stop are essential.</p>
+      <h3>What risk per trade should a bot use?</h3>
+      <p>Many traders risk between 0.5% and 2% of the balance per trade, so a losing streak does not break the daily or the maximum loss limit.</p>
+      <h3>How do I test a strategy without risking money?</h3>
+      <p>Backtest it on past data, then run it forward on live prices with a virtual balance. Crypto Robot gives every bot a virtual $10,000 for free.</p>
+      <div class="page-cta">
+        <p>Pick a strategy and see how it holds up on live prices.</p>
+        <a class="btn" href="/#start">Build my first bot <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <h2>Related guides</h2>
+      <ul><li><a href="/how-to-build-a-crypto-trading-bot/">How to build a crypto trading bot</a></li><li><a href="/ai-crypto-trading-bot/">AI crypto trading bots explained</a></li><li><a href="/chatgpt-trading-bot/">ChatGPT trading bot guide</a></li></ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/how-to-build-a-crypto-trading-bot/">How to build a crypto trading bot</a><a href="/ai-crypto-trading-bot/">AI crypto trading bots explained</a><a href="/chatgpt-trading-bot/">ChatGPT trading bot guide</a><a href="/crypto-trading-bot-strategies/">Crypto trading bot strategies</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <span>&copy; 2026 Crypto Robot</span>
+    <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
+  </div>
+</footer>
+</body>
+</html>
