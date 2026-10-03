@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7 Backtesting Mistakes That Fake a Winning Crypto Bot</title>
+<meta name="description" content="Overfitting, look-ahead bias, missing fees, survivorship bias and three other backtesting mistakes that inflate crypto bot results, with a fix for each.">
+<link rel="canonical" href="https://cryptorobot.software/backtesting-mistakes/">
+<meta property="og:title" content="7 Backtesting Mistakes That Fake a Winning Crypto Bot">
+<meta property="og:description" content="Overfitting, look-ahead bias, missing fees, survivorship bias and three other backtesting mistakes that inflate crypto bot results, with a fix for each.">
+<meta property="og:url" content="https://cryptorobot.software/backtesting-mistakes/">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#f5f2ea">
+<link rel="preload" href="/assets/fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "Seven backtesting mistakes that make a losing bot look like a winner", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "author": {"@type": "Organization", "name": "Crypto Robot"}, "publisher": {"@type": "Organization", "name": "Crypto Robot"}, "mainEntityOfPage": "https://cryptorobot.software/backtesting-mistakes/"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is overfitting in backtesting?", "acceptedAnswer": {"@type": "Answer", "text": "Overfitting means tuning a strategy so closely to past data that it captures random noise. It looks excellent in the backtest and performs much worse on new data."}}, {"@type": "Question", "name": "How do I know if my backtest has look-ahead bias?", "acceptedAnswer": {"@type": "Answer", "text": "Shift your signals by one candle so every trade uses only closed data, and rerun the test. A sharp drop in performance points to a leak of future information."}}, {"@type": "Question", "name": "How many trades does a backtest need?", "acceptedAnswer": {"@type": "Answer", "text": "There is no fixed number, but a few dozen trades say little. A few hundred trades across different market conditions give a far more reliable picture."}}, {"@type": "Question", "name": "How can I check a backtest result for free?", "acceptedAnswer": {"@type": "Answer", "text": "Run the strategy forward on live prices with virtual money. Crypto Robot gives each bot a virtual $10,000 at no cost and with no card."}}]}
+</script>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="logo-glyph" aria-hidden="true"></span>Crypto Robot</a>
+    <nav aria-label="Main"><a href="/#pipeline">How it works</a><a class="hide-sm" href="/how-to-backtest-a-crypto-trading-bot/">Backtesting guide</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="label">Guide</p>
+      <h1>Seven backtesting mistakes that make a losing bot look like a winner</h1>
+      <p class="updated">Last updated: 3 October 2026</p>
+    </div>
+    <div class="prose">
+      <p>A backtest rarely lies on purpose. It does exactly what you told it to, and small modelling errors add up to a strategy that looks far better on paper than it can ever be in a market. These seven mistakes cause most of the damage. Each one comes with the check that catches it.</p>
+      <h2>1. Overfitting the parameters</h2>
+      <p>Try enough combinations of moving-average lengths, RSI thresholds and stop distances, and one of them will fit the past beautifully by chance. The more knobs a strategy has and the more you turn them, the less the best result means.</p>
+      <p><strong>Fix:</strong> keep few parameters and prefer round values. Tune on one period, judge on another you never touched. Check that neighbouring values give similar results; an isolated peak is luck.</p>
+      <h2>2. Look-ahead bias</h2>
+      <p>The bot uses information it could not have had at the time of the trade: the candle's close to enter at its open, an indicator computed on the full dataset, a daily high used before the day is over.</p>
+      <p><strong>Fix:</strong> compute every signal on closed candles and fill the trade at the next candle's open. Shift your signal column by one candle and rerun. If the result collapses, the original had a leak.</p>
+      <h2>3. Ignoring fees, slippage and funding</h2>
+      <p>Short-term strategies live on thin margins. Leave out costs and a strategy that trades several times a day can turn from a loss into an impressive gain.</p>
+      <p><strong>Fix:</strong> charge your exchange's real fee on both sides of every trade, add slippage to market orders, include funding on perpetual futures, then double all three as a stress test.</p>
+      <h2>4. Survivorship bias in coin selection</h2>
+      <p>Testing on today's top coins means testing on the winners. Coins that crashed or were delisted are missing from the list, so a strategy that buys dips looks safer than it was.</p>
+      <p><strong>Fix:</strong> pick the coin list as it stood at the start of the test, or limit the test to large pairs that existed throughout the whole period.</p>
+      <h2>5. Too few trades</h2>
+      <p>Twenty trades with a 70% win rate is a coin that landed heads 14 times. The statistics in a backtest report mean little until there are enough trades for luck to average out.</p>
+      <p><strong>Fix:</strong> aim for a few hundred trades across different market conditions, or accept that the result is a hint and nothing more.</p>
+      <h2>6. A single market regime</h2>
+      <p>A strategy tested only during a bull run learns to buy dips that always recover. Crypto spends long periods trending and long periods ranging, and most strategies only work in one of the two.</p>
+      <p><strong>Fix:</strong> include at least one rise, one fall and one sideways period. Report results for each separately; a strategy that wins everywhere is rare, so know where yours loses.</p>
+      <h2>7. Judging by total return alone</h2>
+      <p>A 200% return with a 60% drawdown along the way is a strategy almost nobody could hold, and one that would hit any sensible loss limit long before the profit arrived.</p>
+      <p><strong>Fix:</strong> read the maximum drawdown and the worst day first. Then check whether the bot would have survived your real limits. On Crypto Robot those are -10% overall and -5% in a single day.</p>
+      <h2>A quick self-check</h2>
+      <ol>
+        <li>Signals use closed candles only, fills happen on the next candle.</li>
+        <li>Fees, slippage and funding are included at realistic levels.</li>
+        <li>The out-of-sample period was never used for tuning.</li>
+        <li>Nearby parameter values give similar results.</li>
+        <li>There are enough trades across rising, falling and flat markets.</li>
+        <li>The worst day and the maximum drawdown fit inside your limits.</li>
+      </ol>
+      <h2>The mistake no backtest can fix</h2>
+      <p>Every backtest is built by someone who already knows how the past turned out, and that knowledge leaks into the choices: which coin, which period, which indicator. The only clean test is on data that does not exist yet. That is the job of a forward test, and Crypto Robot runs one for free: live crypto prices, a virtual $10,000, three levels and drawdown limits that do not bend.</p>
+      <h2>Frequently asked questions</h2>
+      <h3>What is overfitting in backtesting?</h3>
+      <p>Overfitting means tuning a strategy so closely to past data that it captures random noise. It looks excellent in the backtest and performs much worse on new data.</p>
+      <h3>How do I know if my backtest has look-ahead bias?</h3>
+      <p>Shift your signals by one candle so every trade uses only closed data, and rerun the test. A sharp drop in performance points to a leak of future information.</p>
+      <h3>How many trades does a backtest need?</h3>
+      <p>There is no fixed number, but a few dozen trades say little. A few hundred trades across different market conditions give a far more reliable picture.</p>
+      <h3>How can I check a backtest result for free?</h3>
+      <p>Run the strategy forward on live prices with virtual money. Crypto Robot gives each bot a virtual $10,000 at no cost and with no card.</p>
+      <div class="page-cta">
+        <p>The cleanest test is on prices nobody has seen yet.</p>
+        <a class="btn" href="/#start">Start a live test <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <h2>Related guides</h2>
+      <ul><li><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a></li><li><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a></li><li><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a></li><li><a href="/crypto-trading-robot/">Crypto trading robots</a></li></ul>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a><a href="/backtesting-mistakes/">Backtesting mistakes</a><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a><a href="/crypto-trading-robot/">Crypto trading robots</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <p class="copy">&copy; 2026 Crypto Robot</p>
+    <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
+  </div>
+</footer>
+</body>
+</html>

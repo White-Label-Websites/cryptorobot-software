@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crypto Trading Robot: How It Works and How to Vet One</title>
+<meta name="description" content="What a crypto trading robot is, the parts inside it, the claims that should worry you, and a five-point check, including a backtest and a live test, before you trust one.">
+<link rel="canonical" href="https://cryptorobot.software/crypto-trading-robot/">
+<meta property="og:title" content="Crypto Trading Robot: How It Works and How to Vet One">
+<meta property="og:description" content="What a crypto trading robot is, the parts inside it, the claims that should worry you, and a five-point check, including a backtest and a live test, before you trust one.">
+<meta property="og:url" content="https://cryptorobot.software/crypto-trading-robot/">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#f5f2ea">
+<link rel="preload" href="/assets/fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "What is a crypto trading robot, and how do you vet one?", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "author": {"@type": "Organization", "name": "Crypto Robot"}, "publisher": {"@type": "Organization", "name": "Crypto Robot"}, "mainEntityOfPage": "https://cryptorobot.software/crypto-trading-robot/"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a crypto trading robot?", "acceptedAnswer": {"@type": "Answer", "text": "Software that places buy and sell orders automatically according to rules written in advance. Robot, bot and algorithm mean the same thing in this context."}}, {"@type": "Question", "name": "Do crypto trading robots really work?", "acceptedAnswer": {"@type": "Answer", "text": "Some strategies make money in some markets, and many lose. A robot is only as good as its rules and risk limits, which is why it should be backtested and then run live on virtual money first."}}, {"@type": "Question", "name": "How can I tell if a trading robot is a scam?", "acceptedAnswer": {"@type": "Answer", "text": "Be wary of guaranteed returns, deposits with a broker chosen for you, secret rules, backtest-only results and celebrity endorsements."}}, {"@type": "Question", "name": "Is Crypto Robot a trading robot I can buy?", "acceptedAnswer": {"@type": "Answer", "text": "No. Crypto Robot is a free testing environment. You bring the robot, and it runs on live prices with a virtual $10,000 under fixed drawdown limits."}}]}
+</script>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="logo-glyph" aria-hidden="true"></span>Crypto Robot</a>
+    <nav aria-label="Main"><a href="/#pipeline">How it works</a><a class="hide-sm" href="/how-to-backtest-a-crypto-trading-bot/">Backtesting guide</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="label">Guide</p>
+      <h1>What is a crypto trading robot, and how do you vet one?</h1>
+      <p class="updated">Last updated: 3 October 2026</p>
+    </div>
+    <div class="prose">
+      <p>A crypto trading robot is software that places buy and sell orders on its own, following rules written in advance. &ldquo;Robot&rdquo;, &ldquo;bot&rdquo; and &ldquo;algorithm&rdquo; describe the same thing. The useful question is never whether a robot is automated; it is whether its rules hold up when tested properly. This page explains how trading robots work and how to check one.</p>
+      <h2>Inside a trading robot</h2>
+      <table>
+        <thead><tr><th>Part</th><th>Job</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Market data</td><td>Feeds prices to the robot</td><td>1-hour BTC/USD candles</td></tr>
+          <tr><td>Strategy</td><td>Decides when to buy and sell</td><td>Buy when the 20-hour average crosses above the 100-hour average</td></tr>
+          <tr><td>Risk module</td><td>Decides how much and when to stop</td><td>Risk 1% per trade, pause after a 4% losing day</td></tr>
+          <tr><td>Execution</td><td>Sends the orders</td><td>Limit orders through an exchange API</td></tr>
+          <tr><td>Logging</td><td>Records every decision</td><td>Trade journal with entry reason and result</td></tr>
+        </tbody>
+      </table>
+      <p>The strategy gets the attention. The risk module decides whether the robot is still running in a month.</p>
+      <h2>Common kinds of crypto robots</h2>
+      <ul>
+        <li><strong>Trend robots</strong> follow sustained moves and accept many small losses while waiting for a big one.</li>
+        <li><strong>Range robots</strong>, such as grid bots, buy low and sell high inside a band and suffer when the price leaves it.</li>
+        <li><strong>Accumulation robots</strong> buy at intervals or after drops to build a position over time.</li>
+        <li><strong>Arbitrage and market-making robots</strong> exploit tiny price differences and need speed and low fees that individuals rarely have.</li>
+      </ul>
+      <h2>Claims that should worry you</h2>
+      <ul>
+        <li><strong>A fixed daily or monthly return.</strong> Markets do not pay a salary. No honest robot can promise one.</li>
+        <li><strong>A deposit with a broker chosen for you.</strong> A frequent pattern in schemes that sell &ldquo;robots&rdquo; to the public.</li>
+        <li><strong>Hidden rules.</strong> If nobody will say what the robot does, you cannot test it.</li>
+        <li><strong>Backtest screenshots and nothing else.</strong> Past curves are easy to tune. Ask for a live record.</li>
+        <li><strong>Celebrity endorsements in ads.</strong> Almost always fabricated.</li>
+      </ul>
+      <div class="callout"><p><strong>About the name.</strong> Crypto Robot, the site you are reading, is a free testing environment. It sells no robot, takes no deposit and has no connection with products sold online under similar names.</p></div>
+      <h2>A five-point check before trusting a robot</h2>
+      <ol>
+        <li><strong>State the rules in two sentences.</strong> When it buys, when it sells. If you cannot, stop here.</li>
+        <li><strong>Find the risk limits.</strong> Size per trade, daily loss limit, maximum drawdown. A robot without them is a bet.</li>
+        <li><strong>Backtest it with costs</strong>, on a period not used to design it. The <a href="/how-to-backtest-a-crypto-trading-bot/">backtesting guide</a> explains how, and the <a href="/free-crypto-backtesting-tools/">free tools guide</a> lists what to use.</li>
+        <li><strong>Look for the usual traps</strong>: overfitting, look-ahead bias, a single market regime. See <a href="/backtesting-mistakes/">seven backtesting mistakes</a>.</li>
+        <li><strong>Run it live on virtual money</strong> under limits it cannot override, and compare with the backtest.</li>
+      </ol>
+      <h2>Run your robot live on Crypto Robot</h2>
+      <p>Step 5 is free here. Your trading robot gets a virtual $10,000 on live crypto prices and climbs three levels: +10% in 5 to 10 days, then +5% twice. A 5% loss in one day or a 10% drawdown overall ends the challenge. Nothing is deposited, and nothing is paid out: the result is a record of how the robot behaves on a live market.</p>
+      <h2>Frequently asked questions</h2>
+      <h3>What is a crypto trading robot?</h3>
+      <p>Software that places buy and sell orders automatically according to rules written in advance. Robot, bot and algorithm mean the same thing in this context.</p>
+      <h3>Do crypto trading robots really work?</h3>
+      <p>Some strategies make money in some markets, and many lose. A robot is only as good as its rules and risk limits, which is why it should be backtested and then run live on virtual money first.</p>
+      <h3>How can I tell if a trading robot is a scam?</h3>
+      <p>Be wary of guaranteed returns, deposits with a broker chosen for you, secret rules, backtest-only results and celebrity endorsements.</p>
+      <h3>Is Crypto Robot a trading robot I can buy?</h3>
+      <p>No. Crypto Robot is a free testing environment. You bring the robot, and it runs on live prices with a virtual $10,000 under fixed drawdown limits.</p>
+      <div class="page-cta">
+        <p>Have a trading robot? See how it behaves on a live market.</p>
+        <a class="btn" href="/#start">Start a live test <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <h2>Related guides</h2>
+      <ul><li><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a></li><li><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a></li><li><a href="/backtesting-mistakes/">Backtesting mistakes</a></li><li><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a></li></ul>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a><a href="/backtesting-mistakes/">Backtesting mistakes</a><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a><a href="/crypto-trading-robot/">Crypto trading robots</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <p class="copy">&copy; 2026 Crypto Robot</p>
+    <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
+  </div>
+</footer>
+</body>
+</html>

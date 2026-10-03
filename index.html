@@ -3,146 +3,184 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Crypto Trading Bot Simulator: Test Your Bot Free | Crypto Robot</title>
-<meta name="description" content="Test your crypto trading bot for free on live market prices with a virtual $10,000. Three levels, fixed drawdown limits, no card and no deposit.">
+<title>Backtest Your Crypto Bot, Then Run It Live for Free | Crypto Robot</title>
+<meta name="description" content="Backtested your crypto bot? Now run it on live market prices with a virtual $10,000 and fixed risk limits. Free crypto robot testing: no card, no deposit.">
 <link rel="canonical" href="https://cryptorobot.software/">
-<meta property="og:title" content="Test your crypto trading bot for free">
-<meta property="og:description" content="Run your crypto bot on live prices with a virtual $10,000 and see if it clears three levels.">
+<meta property="og:title" content="Backtest your crypto bot, then run it live for free">
+<meta property="og:description" content="A backtest says how your bot would have done. Crypto Robot shows how it does now, on live prices with a virtual $10,000.">
 <meta property="og:url" content="https://cryptorobot.software/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#0d1612">
-<link rel="preload" href="/assets/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#f5f2ea">
+<link rel="preload" href="/assets/fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Do I need to know how to code?","acceptedAnswer":{"@type":"Answer","text":"No. You can set up a bot from simple rules. If you already code your own bots, you can test the same logic here on live prices."}},
-{"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Signing up asks for no card, no deposit and no payment of any kind."}},
-{"@type":"Question","name":"Is any real money traded?","acceptedAnswer":{"@type":"Answer","text":"No. Every bot trades a virtual balance of $10,000. Prices come from live crypto markets, the money does not."}},
-{"@type":"Question","name":"Why are there drawdown limits?","acceptedAnswer":{"@type":"Answer","text":"A bot that wins big once and then loses half the account is not a good bot. The -5% daily and -10% maximum drawdown limits reward strategies that stay under control."}},
-{"@type":"Question","name":"What happens when my bot breaks a limit?","acceptedAnswer":{"@type":"Answer","text":"The run ends immediately. You can see which day and which trades caused it, adjust the strategy and start a new bot."}}
+{"@type":"Question","name":"Does Crypto Robot backtest my bot on historical data?","acceptedAnswer":{"@type":"Answer","text":"No. Crypto Robot is the live step that comes after a backtest. You backtest with standard tools, such as a charting platform's strategy tester or a Python library, then run the bot here on live prices with a virtual $10,000."}},
+{"@type":"Question","name":"How much does it cost?","acceptedAnswer":{"@type":"Answer","text":"Nothing. Opening an account asks for no card and no deposit."}},
+{"@type":"Question","name":"Can I win or lose real money?","acceptedAnswer":{"@type":"Answer","text":"No. Each bot trades a virtual balance. There is no deposit, no withdrawal and no payout: the only thing at stake is your strategy's record."}},
+{"@type":"Question","name":"How long does a live test last?","acceptedAnswer":{"@type":"Answer","text":"Level 1 lasts between 5 and 10 days. Level 2 needs at least 5 days and has no end date. Level 3 has neither a minimum nor a deadline."}},
+{"@type":"Question","name":"What stops a test early?","acceptedAnswer":{"@type":"Answer","text":"A loss of 5% in a single day, or a total drawdown of 10%. Either one ends the challenge on the spot."}},
+{"@type":"Question","name":"Can I test more than one bot?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each bot you set up gets its own virtual $10,000 balance, so you can compare versions of a strategy side by side."}}
 ]}
 </script>
 </head>
 <body>
-<div class="wrap top">
-  <a class="mark" href="/"><i aria-hidden="true"></i>Crypto Robot</a>
-  <nav aria-label="Main"><a href="#rules">The rules</a><a class="hide-sm" href="/how-to-build-a-crypto-trading-bot/">Build a bot</a><a href="/contact/">Contact</a></nav>
-</div>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="logo-glyph" aria-hidden="true"></span>Crypto Robot</a>
+    <nav aria-label="Main"><a href="#pipeline">How it works</a><a class="hide-sm" href="/how-to-backtest-a-crypto-trading-bot/">Backtesting guide</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
 
 <main>
 <section class="hero">
   <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow rise"><b>Free</b> Crypto trading bot simulator</p>
-      <h1 class="rise d1">Your crypto trading bot, <em>tested on live prices.</em></h1>
-      <p class="lede rise d2">Crypto Robot runs your trading bot on real-time crypto prices with a virtual $10,000. Same rules for every bot: hit the target, stay inside the drawdown limits, and climb three levels.</p>
-      <ul class="ticks rise d3">
-        <li><div>Live market prices <span>from the first minute</span></div></li>
-        <li><div>Virtual $10,000 <span>no card, no deposit</span></div></li>
-        <li><div>Hard risk limits <span>-5% per day, -10% overall</span></div></li>
-      </ul>
+    <div class="hero-copy">
+      <p class="tag fade">Crypto robot testing lab <span>Free</span></p>
+      <h1 class="fade f1">Backtest your crypto bot. <mark>Then make it prove itself live.</mark></h1>
+      <p class="intro fade f2">A backtest shows how a strategy would have done. Crypto Robot shows how it does now: your bot trades live crypto prices with a virtual $10,000, under risk limits it cannot negotiate with.</p>
+      <figure class="curve fade f3" aria-labelledby="curve-cap">
+        <svg viewBox="0 0 560 230" role="img" aria-label="Illustration: an equity curve backtested on past data, then continued on live prices after today, between a +10% target and a -10% limit">
+          <rect class="c-past" x="0" y="0" width="300" height="230"/>
+          <line class="c-target" x1="0" y1="42" x2="560" y2="42"/>
+          <line class="c-limit" x1="0" y1="192" x2="560" y2="192"/>
+          <line class="c-zero" x1="0" y1="117" x2="560" y2="117"/>
+          <polyline class="c-bt" points="0,117 20,112 40,120 60,104 80,108 100,96 120,101 140,88 160,94 180,80 200,86 220,72 240,78 260,66 280,70 300,62"/>
+          <polyline class="c-live" points="300,117 318,113 336,121 354,110 372,114 390,104 408,109 426,98 444,103 462,92 480,96 498,86"/>
+          <line class="c-today" x1="300" y1="10" x2="300" y2="222"/>
+          <circle class="c-dot" cx="498" cy="86" r="6"/>
+          <text class="c-lab" x="10" y="24">BACKTEST &middot; PAST DATA</text>
+          <text class="c-lab c-lab-live" x="310" y="24">LIVE &middot; VIRTUAL $10,000</text>
+          <text class="c-val c-val-t" x="552" y="36" text-anchor="end">+10% target</text>
+          <text class="c-val c-val-r" x="552" y="210" text-anchor="end">-10% limit</text>
+        </svg>
+        <figcaption id="curve-cap">Illustration. A good backtest earns a bot its place in the live test, nothing more. The live curve restarts at $10,000.</figcaption>
+      </figure>
     </div>
-    <div class="signup rise d4" id="start">
-      <header>
-        <h2>Launch your first bot</h2>
-        <p>Free account. No real money, ever.</p>
-      </header>
-      <div class="wl-signup"></div>
-    </div>
-  </div>
-</section>
-
-<section class="preview" aria-labelledby="preview-title">
-  <div class="wrap">
-    <div>
-      <p class="kicker">Bot dashboard</p>
-      <h2 class="sec" id="preview-title">See every trade your bot makes</h2>
-      <p class="sec-p">Balance, profit and loss, distance to the limits and trading days completed, updated as the market moves.</p>
-    </div>
-    <article class="bot" aria-label="Example bot card">
-      <div class="bot-head">
-        <div class="bot-name">RSI Grid ETH<small>Level 1 &middot; example</small></div>
-        <span class="badge">Active</span>
+    <aside class="join fade f2" id="start" aria-labelledby="join-title">
+      <div class="join-head">
+        <h2 id="join-title">Put your bot on live prices</h2>
+        <p>Free account &middot; no card &middot; no deposit</p>
       </div>
-      <dl class="stats">
-        <div><dt>Balance</dt><dd>$10,410</dd></div>
-        <div><dt>PnL</dt><dd class="up">+4.1%</dd></div>
-        <div><dt>Target</dt><dd>+10%</dd></div>
-      </dl>
-      <div class="gauge-label"><span>-10%</span><span>0</span><span>+10%</span></div>
-      <div class="gauge" role="img" aria-label="PnL at +4.1% on a scale from -10% to +10%"><i style="left:calc(50% + 20.5%)"></i></div>
-      <div class="gauge-legend"><span>Max loss</span><span>Target</span></div>
-      <div class="days" aria-label="2 of 5 minimum trading days completed"><b class="on"></b><b class="on"></b><b></b><b></b><b></b><span>2/5 days</span></div>
-    </article>
+      <div class="wl-signup"></div>
+    </aside>
   </div>
 </section>
 
-<section class="steps wrap" aria-labelledby="how-title">
-  <div class="steps-head">
-    <div>
-      <p class="kicker">How it works</p>
-      <h2 class="sec" id="how-title">From strategy to verdict</h2>
-    </div>
-  </div>
-  <ol>
-    <li><h3>Set up your bot</h3><p>Choose a market and the rules for entering and leaving trades. A <a href="/crypto-trading-bot-strategies/">grid, trend or mean-reversion</a> idea is enough to start.</p></li>
-    <li><h3>Let it trade live prices</h3><p>The bot runs on real-time crypto prices with a virtual $10,000, and every limit is checked for you.</p></li>
-    <li><h3>Climb or rebuild</h3><p>Reach the target to unlock the next level. Break a limit and the run shows where the strategy failed.</p></li>
-  </ol>
-</section>
-
-<section class="rules" id="rules" aria-labelledby="rules-title">
+<section class="versus" aria-labelledby="versus-title">
   <div class="wrap">
-    <p class="kicker">The rules</p>
-    <h2 class="sec" id="rules-title">Three levels, the same limits</h2>
-    <p class="sec-p">The targets shrink as you climb. The limits never move, so a steady bot beats a lucky one.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th scope="col">Level</th><th scope="col">Target</th><th scope="col">Min. days</th><th scope="col">Max. days</th><th scope="col">Max. drawdown</th><th scope="col">Daily drawdown</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Level 1<small>First proof</small></th><td class="t">+10%</td><td>5</td><td>10</td><td class="r">-10%</td><td class="r">-5%</td></tr>
-          <tr><th scope="row">Level 2<small>Repeat it</small></th><td class="t">+5%</td><td>5</td><td class="n">No limit</td><td class="r">-10%</td><td class="r">-5%</td></tr>
-          <tr><th scope="row">Level 3<small>Keep it steady</small></th><td class="t">+5%</td><td class="n">None</td><td class="n">No limit</td><td class="r">-10%</td><td class="r">-5%</td></tr>
-        </tbody>
-      </table>
+    <div class="head">
+      <p class="label">Why backtesting is not enough</p>
+      <h2 class="title" id="versus-title">Two tests, two different questions</h2>
+      <p class="sub">Run the backtest to throw out weak ideas fast. Run the live test to find out whether the survivor still works when the future is not in the data.</p>
     </div>
-    <p class="breach" role="note"><span aria-hidden="true">&#9888;</span><span><strong>Hard stop.</strong> Breaking the daily or the maximum drawdown ends the run immediately.</span></p>
-    <p class="sec-cta"><a class="btn" href="#start">Test my bot for free <span aria-hidden="true">&rarr;</span></a> <a class="more" href="/how-to-build-a-crypto-trading-bot/">How to build a crypto trading bot</a></p>
+    <div class="vs-grid">
+      <article class="vs vs-past">
+        <h3>Backtest <small>on past data, with your own tools</small></h3>
+        <dl>
+          <div><dt>Answers</dt><dd>How would these rules have done?</dd></div>
+          <div><dt>Speed</dt><dd>Years of candles in minutes</dd></div>
+          <div><dt>Main trap</dt><dd>Overfitting and look-ahead bias</dd></div>
+          <div><dt>Risk limits</dt><dd>Only the ones you remember to code</dd></div>
+        </dl>
+      </article>
+      <article class="vs vs-live">
+        <h3>Live test <small>on Crypto Robot</small></h3>
+        <dl>
+          <div><dt>Answers</dt><dd>How do these rules do right now?</dd></div>
+          <div><dt>Speed</dt><dd>Real time, from 5 days per level</dd></div>
+          <div><dt>Main cost</dt><dd>Patience: the future arrives one candle at a time</dd></div>
+          <div><dt>Risk limits</dt><dd>-5% per day and -10% overall, for every bot</dd></div>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pipeline" id="pipeline" aria-labelledby="pipe-title">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">How it works</p>
+      <h2 class="title" id="pipe-title">From idea to live record in four stages</h2>
+    </div>
+    <ol class="stages">
+      <li><span class="stage-n">01</span><h3>Write the rules</h3><p>Entry, exit, stop and position size, each one precise enough for a machine to follow.</p></li>
+      <li><span class="stage-n">02</span><h3>Backtest on past data</h3><p>Use a free strategy tester or a Python library. Our <a href="/free-crypto-backtesting-tools/">guide to free backtesting tools</a> compares them.</p></li>
+      <li class="here"><span class="stage-n">03</span><h3>Run it live here</h3><p>Your bot trades live crypto prices with a virtual $10,000. No card, no deposit.</p></li>
+      <li><span class="stage-n">04</span><h3>Climb or rebuild</h3><p>Hit the target to move up a level. Break a limit and the challenge ends, so you go back to stage 1 with real evidence.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="levels" aria-labelledby="levels-title">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">The challenge</p>
+      <h2 class="title" id="levels-title">Three levels, one set of limits</h2>
+      <p class="sub">Targets get smaller as the bot climbs. The limits never move, so a steady strategy goes further than a lucky one.</p>
+    </div>
+    <div class="lv-grid">
+      <article class="lv"><p class="lv-n">Level 1</p><p class="lv-goal">+10%</p><p class="lv-name">Prove it</p><ul><li><span>Minimum</span>5 days</li><li><span>Maximum</span>10 days</li></ul></article>
+      <article class="lv"><p class="lv-n">Level 2</p><p class="lv-goal">+5%</p><p class="lv-name">Repeat it</p><ul><li><span>Minimum</span>5 days</li><li><span>Maximum</span>No limit</li></ul></article>
+      <article class="lv"><p class="lv-n">Level 3</p><p class="lv-goal">+5%</p><p class="lv-name">Hold it</p><ul><li><span>Minimum</span>None</li><li><span>Maximum</span>No limit</li></ul></article>
+    </div>
+    <div class="limits" role="note">
+      <p><b>-10%</b> maximum drawdown</p>
+      <p><b>-5%</b> daily drawdown</p>
+      <p class="stop">Breaking either one ends the challenge immediately.</p>
+    </div>
+    <p class="actions"><a class="btn" href="#start">Start a live test <span aria-hidden="true">&rarr;</span></a> <a class="link" href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a></p>
+  </div>
+</section>
+
+<section class="library" aria-labelledby="lib-title">
+  <div class="wrap">
+    <div class="head">
+      <p class="label">Backtesting library</p>
+      <h2 class="title" id="lib-title">Guides for testing a trading robot properly</h2>
+    </div>
+    <div class="lib-grid">
+      <a class="card" href="/how-to-backtest-a-crypto-trading-bot/"><span class="card-k">Step by step</span><h3>How to backtest a crypto trading bot</h3><p>Data, fees, out-of-sample periods and the numbers to read in the report.</p></a>
+      <a class="card" href="/free-crypto-backtesting-tools/"><span class="card-k">Tools</span><h3>Free crypto backtesting tools compared</h3><p>Strategy testers, Python libraries and open-source bot frameworks.</p></a>
+      <a class="card" href="/backtesting-mistakes/"><span class="card-k">Pitfalls</span><h3>Seven backtesting mistakes that fake a winning bot</h3><p>Overfitting, look-ahead bias, missing fees and the other classics.</p></a>
+      <a class="card" href="/forward-testing-vs-backtesting/"><span class="card-k">Method</span><h3>Forward testing vs backtesting</h3><p>What each test proves, and why a strategy needs both.</p></a>
+      <a class="card" href="/crypto-trading-robot/"><span class="card-k">Basics</span><h3>What a crypto trading robot is, and how to vet one</h3><p>How trading robots work and the checks to run before trusting one.</p></a>
+    </div>
   </div>
 </section>
 
 <section class="faq" aria-labelledby="faq-title">
   <div class="wrap">
-    <div>
-      <p class="kicker">Questions</p>
-      <h2 class="sec" id="faq-title">Before you launch</h2>
+    <div class="head">
+      <p class="label">Questions</p>
+      <h2 class="title" id="faq-title">Before your bot goes live</h2>
     </div>
-    <div>
-      <details open><summary>Do I need to know how to code?</summary><p>No. You can set up a bot from simple rules. If you already code your own bots, you can test the same logic here on live prices.</p></details>
-      <details open><summary>Is it really free?</summary><p>Yes. Signing up asks for no card, no deposit and no payment of any kind.</p></details>
-      <details open><summary>Is any real money traded?</summary><p>No. Every bot trades a virtual balance of $10,000. Prices come from live crypto markets, the money does not.</p></details>
-      <details open><summary>Why are there drawdown limits?</summary><p>A bot that wins big once and then loses half the account is not a good bot. The -5% daily and -10% maximum drawdown limits reward strategies that stay under control.</p></details>
-      <details open><summary>What happens when my bot breaks a limit?</summary><p>The run ends immediately. You can see which day and which trades caused it, adjust the strategy and start a new bot.</p></details>
-      <details><summary>Can I test a bot written with ChatGPT or another AI?</summary><p>Yes. Read our guides on the <a href="/chatgpt-trading-bot/">ChatGPT trading bot</a> and <a href="/ai-crypto-trading-bot/">AI crypto trading bots</a>, then run yours here.</p></details>
-      <details><summary>Who runs this site?</summary><p>An independent publisher. Details are in our <a href="/legal-notice/">legal notice</a>, and you can reach us through the <a href="/contact/">contact page</a>.</p></details>
+    <div class="qa">
+      <details open><summary>Does Crypto Robot backtest my bot on historical data?</summary><p>No. Crypto Robot is the live step that comes after a backtest. You backtest with standard tools, such as a charting platform's strategy tester or a Python library, then run the bot here on live prices with a virtual $10,000. The <a href="/how-to-backtest-a-crypto-trading-bot/">backtesting guide</a> shows the full method.</p></details>
+      <details><summary>How much does it cost?</summary><p>Nothing. Opening an account asks for no card and no deposit.</p></details>
+      <details><summary>Can I win or lose real money?</summary><p>No. Each bot trades a virtual balance. There is no deposit, no withdrawal and no payout: the only thing at stake is your strategy's record.</p></details>
+      <details><summary>How long does a live test last?</summary><p>Level 1 lasts between 5 and 10 days. Level 2 needs at least 5 days and has no end date. Level 3 has neither a minimum nor a deadline.</p></details>
+      <details><summary>What stops a test early?</summary><p>A loss of 5% in a single day, or a total drawdown of 10%. Either one ends the challenge on the spot.</p></details>
+      <details><summary>Can I test more than one bot?</summary><p>Yes. Each bot you set up gets its own virtual $10,000 balance, so you can compare versions of a strategy side by side.</p></details>
+      <details><summary>Who runs this site?</summary><p>An independent publisher. See the <a href="/legal-notice/">legal notice</a>, or write to us through the <a href="/contact/">contact page</a>.</p></details>
     </div>
   </div>
 </section>
 
-<section class="cta">
+<section class="closing">
   <div class="wrap">
-    <h2>Find out if your bot holds up.</h2>
-    <a class="btn" href="#start">Launch my bot <span aria-hidden="true">&rarr;</span></a>
+    <h2>Your backtest looks good. Now show it live.</h2>
+    <a class="btn btn-light" href="#start">Create my free account <span aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 </main>
 
-<footer>
+<footer class="foot">
   <div class="wrap">
-    <nav aria-label="Footer"><a href="/how-to-build-a-crypto-trading-bot/">How to build a crypto trading bot</a><a href="/ai-crypto-trading-bot/">AI crypto trading bots explained</a><a href="/chatgpt-trading-bot/">ChatGPT trading bot guide</a><a href="/crypto-trading-bot-strategies/">Crypto trading bot strategies</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
-    <span>&copy; 2026 Crypto Robot</span>
+    <nav aria-label="Footer"><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a><a href="/backtesting-mistakes/">Backtesting mistakes</a><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a><a href="/crypto-trading-robot/">Crypto trading robots</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <p class="copy">&copy; 2026 Crypto Robot</p>
     <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
   </div>
 </footer>

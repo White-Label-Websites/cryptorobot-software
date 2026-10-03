@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Backtest a Crypto Trading Bot (Step-by-Step Guide)</title>
+<meta name="description" content="A practical method to backtest a crypto trading bot: get clean candle data, model fees, split in-sample and out-of-sample, read the report, then confirm the result on live prices.">
+<link rel="canonical" href="https://cryptorobot.software/how-to-backtest-a-crypto-trading-bot/">
+<meta property="og:title" content="How to Backtest a Crypto Trading Bot (Step-by-Step Guide)">
+<meta property="og:description" content="A practical method to backtest a crypto trading bot: get clean candle data, model fees, split in-sample and out-of-sample, read the report, then confirm the result on live prices.">
+<meta property="og:url" content="https://cryptorobot.software/how-to-backtest-a-crypto-trading-bot/">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#f5f2ea">
+<link rel="preload" href="/assets/fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "How to backtest a crypto trading bot, step by step", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "author": {"@type": "Organization", "name": "Crypto Robot"}, "publisher": {"@type": "Organization", "name": "Crypto Robot"}, "mainEntityOfPage": "https://cryptorobot.software/how-to-backtest-a-crypto-trading-bot/"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can you backtest a crypto trading bot for free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Free strategy testers on charting platforms and open-source Python libraries such as backtesting.py, Backtrader or vectorbt cost nothing, and historical candles can be downloaded from exchange APIs."}}, {"@type": "Question", "name": "How much historical data do I need for a crypto backtest?", "acceptedAnswer": {"@type": "Answer", "text": "Enough to cover different market regimes: at least one strong rise, one strong fall and one sideways period. For most strategies on hourly candles, that means several years of data."}}, {"@type": "Question", "name": "Does a profitable backtest mean the bot will make money?", "acceptedAnswer": {"@type": "Answer", "text": "No. A backtest only shows how the rules would have performed on past data. Overfitting, missing costs and changing markets often make live results worse, which is why a forward test on live prices comes next."}}, {"@type": "Question", "name": "Does Crypto Robot backtest strategies?", "acceptedAnswer": {"@type": "Answer", "text": "No. Crypto Robot is the live step: after you backtest with your own tools, your bot runs on live prices with a virtual $10,000 under fixed drawdown limits."}}]}
+</script>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="logo-glyph" aria-hidden="true"></span>Crypto Robot</a>
+    <nav aria-label="Main"><a href="/#pipeline">How it works</a><a class="hide-sm" href="/how-to-backtest-a-crypto-trading-bot/" aria-current="page">Backtesting guide</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="label">Guide</p>
+      <h1>How to backtest a crypto trading bot, step by step</h1>
+      <p class="updated">Last updated: 3 October 2026</p>
+    </div>
+    <div class="prose">
+      <p>Backtesting means replaying a trading bot's rules over price history and recording every trade it would have taken. Done carefully, it tells you in an hour whether an idea deserves weeks of attention. Done carelessly, it produces a beautiful equity curve that collapses the first day the bot meets a real market. This guide covers the careful version.</p>
+      <div class="callout"><p><strong>Where Crypto Robot fits.</strong> Crypto Robot does not run historical backtests. You backtest with the tools described below, then bring the strategy here to run on live prices with a virtual $10,000. The last section explains that handover.</p></div>
+      <h2>What you need before you start</h2>
+      <ul>
+        <li><strong>A written rule set.</strong> Entry, exit, stop, position size. If a rule needs your judgement on the day, a backtest cannot test it.</li>
+        <li><strong>Historical candles</strong> for the pair and timeframe you will trade.</li>
+        <li><strong>A backtesting tool.</strong> A charting platform's strategy tester, a Python library or an open-source bot framework. Our <a href="/free-crypto-backtesting-tools/">comparison of free backtesting tools</a> helps you choose.</li>
+        <li><strong>Your exchange's fee schedule</strong>, because fees decide whether many short-term strategies make or lose money.</li>
+      </ul>
+      <h2>Step 1: get data you can trust</h2>
+      <p>Most exchanges publish historical OHLCV candles (open, high, low, close, volume) through their public API, and the open-source CCXT library fetches them from dozens of exchanges with the same code. Download more history than you think you need: at least one full bull phase, one bear phase and one long sideways stretch. Then check the file. Look for missing candles, duplicated timestamps and absurd spikes. A single bad print at a tenth of the real price can create a trade that never could have happened.</p>
+      <p>Use data from the exchange you plan to trade on, or one with similar liquidity. Prices for small coins differ from one venue to the next, and a strategy tuned on one exchange's quirks may not travel.</p>
+      <h2>Step 2: split the history before you look at it</h2>
+      <p>Cut the data into two parts and decide the cut date before running anything. Use the first part, around 70%, to design and tune the strategy. Keep the last 30% locked away. When the strategy is finished, run it once on the locked period. That out-of-sample result is the number that matters; the in-sample result mostly measures how hard you tuned.</p>
+      <p>For a stricter version, use walk-forward testing: tune on a window, test on the next slice, roll both forward, repeat, and stitch the test slices together.</p>
+      <h2>Step 3: model costs honestly</h2>
+      <ul>
+        <li><strong>Fees.</strong> Apply the taker fee on market orders and the maker fee on limit orders, on both sides of each trade. A strategy that trades 300 times a year pays the fee 600 times.</li>
+        <li><strong>Slippage.</strong> Add a small penalty to every market order. Fast moves and thin order books make it larger than you expect.</li>
+        <li><strong>Funding.</strong> On perpetual futures, include funding payments for positions held across funding times.</li>
+      </ul>
+      <p>Run the backtest once with no costs and once with them. If the edge disappears with costs, the strategy was trading noise.</p>
+      <h2>Step 4: make the simulation match reality</h2>
+      <p>The commonest bug in home-made backtests is deciding with information the bot would not have had. If the signal uses a candle's close, the trade can only happen at the next candle's open. Indicators must be computed from closed candles only. If the stop and the target could both have been hit inside the same candle, assume the worse outcome. Our list of <a href="/backtesting-mistakes/">backtesting mistakes</a> covers the other traps.</p>
+      <h2>Step 5: read the report beyond the total return</h2>
+      <table>
+        <thead><tr><th>Metric</th><th>What it tells you</th><th>Warning sign</th></tr></thead>
+        <tbody>
+          <tr><td>Maximum drawdown</td><td>The worst fall from a peak, in %</td><td>Deeper than you could sit through, or than a -10% limit allows</td></tr>
+          <tr><td>Worst day</td><td>The largest single-day loss</td><td>Close to -5%: a live daily limit would have stopped the bot</td></tr>
+          <tr><td>Profit factor</td><td>Gross profit divided by gross loss</td><td>Below about 1.2 after costs leaves little margin</td></tr>
+          <tr><td>Number of trades</td><td>How much evidence you have</td><td>A few dozen trades prove very little</td></tr>
+          <tr><td>Win rate with average win and loss</td><td>How the profit is made</td><td>High win rate with rare, huge losses</td></tr>
+          <tr><td>Exposure</td><td>Share of time in the market</td><td>Returns that match buy-and-hold with more risk</td></tr>
+        </tbody>
+      </table>
+      <p>Always compare with a plain benchmark, such as buying and holding the same coin over the same period. A bot that earns less than holding, with a deeper drawdown, adds complexity for nothing.</p>
+      <h2>Step 6: stress the result</h2>
+      <ul>
+        <li>Move each parameter a little up and down. A robust strategy degrades gently; a fragile one falls off a cliff.</li>
+        <li>Run the same rules on a second coin or a second timeframe.</li>
+        <li>Double the fees and slippage and see what survives.</li>
+      </ul>
+      <h2>Step 7: hand it over to a live test</h2>
+      <p>A backtest, however careful, is still a test on data you have already seen. The next step is to run the strategy forward on prices that do not exist yet. On Crypto Robot, your bot gets a virtual $10,000 on live crypto prices and three levels to clear, under fixed risk limits:</p>
+      <table>
+        <thead><tr><th>Level</th><th>Target</th><th>Min. days</th><th>Max. days</th><th>Max. drawdown</th><th>Daily drawdown</th></tr></thead>
+        <tbody>
+          <tr><td>Level 1</td><td>+10%</td><td>5</td><td>10</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 2</td><td>+5%</td><td>5</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 3</td><td>+5%</td><td>None</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+        </tbody>
+      </table>
+      <p>A drop of 5% in one day or 10% overall ends the challenge. Compare what happens with your backtest: if the live drawdown runs far deeper than anything the backtest showed, the backtest was too optimistic. Read <a href="/forward-testing-vs-backtesting/">forward testing vs backtesting</a> for how to compare the two.</p>
+      <h2>Frequently asked questions</h2>
+      <h3>Can you backtest a crypto trading bot for free?</h3>
+      <p>Yes. Free strategy testers on charting platforms and open-source Python libraries such as backtesting.py, Backtrader or vectorbt cost nothing, and historical candles can be downloaded from exchange APIs.</p>
+      <h3>How much historical data do I need for a crypto backtest?</h3>
+      <p>Enough to cover different market regimes: at least one strong rise, one strong fall and one sideways period. For most strategies on hourly candles, that means several years of data.</p>
+      <h3>Does a profitable backtest mean the bot will make money?</h3>
+      <p>No. A backtest only shows how the rules would have performed on past data. Overfitting, missing costs and changing markets often make live results worse, which is why a forward test on live prices comes next.</p>
+      <h3>Does Crypto Robot backtest strategies?</h3>
+      <p>No. Crypto Robot is the live step: after you backtest with your own tools, your bot runs on live prices with a virtual $10,000 under fixed drawdown limits.</p>
+      <div class="page-cta">
+        <p>Backtest done? Find out how the strategy behaves on live prices.</p>
+        <a class="btn" href="/#start">Start a live test <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <h2>Related guides</h2>
+      <ul><li><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a></li><li><a href="/backtesting-mistakes/">Backtesting mistakes</a></li><li><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a></li><li><a href="/crypto-trading-robot/">Crypto trading robots</a></li></ul>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a><a href="/backtesting-mistakes/">Backtesting mistakes</a><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a><a href="/crypto-trading-robot/">Crypto trading robots</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <p class="copy">&copy; 2026 Crypto Robot</p>
+    <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
+  </div>
+</footer>
+</body>
+</html>

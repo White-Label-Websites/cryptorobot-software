@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forward Testing vs Backtesting: What Each Proves for a Trading Bot</title>
+<meta name="description" content="Backtesting replays the past; forward testing runs the strategy on live prices as they arrive. What each test proves, how long to run them and how to compare the results.">
+<link rel="canonical" href="https://cryptorobot.software/forward-testing-vs-backtesting/">
+<meta property="og:title" content="Forward Testing vs Backtesting: What Each Proves for a Trading Bot">
+<meta property="og:description" content="Backtesting replays the past; forward testing runs the strategy on live prices as they arrive. What each test proves, how long to run them and how to compare the results.">
+<meta property="og:url" content="https://cryptorobot.software/forward-testing-vs-backtesting/">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#f5f2ea">
+<link rel="preload" href="/assets/fonts/BricolageGrotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/consent.js" data-ga="G-0GTB2G1NR9"></script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "Forward testing vs backtesting: why a trading bot needs both", "datePublished": "2026-10-03", "dateModified": "2026-10-03", "author": {"@type": "Organization", "name": "Crypto Robot"}, "publisher": {"@type": "Organization", "name": "Crypto Robot"}, "mainEntityOfPage": "https://cryptorobot.software/forward-testing-vs-backtesting/"}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between backtesting and forward testing?", "acceptedAnswer": {"@type": "Answer", "text": "Backtesting runs a strategy on historical data to see how it would have performed. Forward testing runs it on live prices as they arrive, so the outcome cannot be known in advance."}}, {"@type": "Question", "name": "Is forward testing better than backtesting?", "acceptedAnswer": {"@type": "Answer", "text": "Each does a different job. Backtesting quickly rejects weak ideas over years of data; forward testing confirms the survivors without hindsight. A robust strategy needs both."}}, {"@type": "Question", "name": "How long should I forward test a trading bot?", "acceptedAnswer": {"@type": "Answer", "text": "Long enough for a meaningful number of trades. For a bot trading several times a day, one to two weeks gives a first reading; slower strategies need longer."}}, {"@type": "Question", "name": "Can I forward test without risking money?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Run the bot on live prices with a virtual balance. Crypto Robot gives each bot a virtual $10,000 for free."}}]}
+</script>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="/"><span class="logo-glyph" aria-hidden="true"></span>Crypto Robot</a>
+    <nav aria-label="Main"><a href="/#pipeline">How it works</a><a class="hide-sm" href="/how-to-backtest-a-crypto-trading-bot/">Backtesting guide</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="label">Guide</p>
+      <h1>Forward testing vs backtesting: why a trading bot needs both</h1>
+      <p class="updated">Last updated: 3 October 2026</p>
+    </div>
+    <div class="prose">
+      <p>Backtesting and forward testing answer two different questions about the same trading bot. A backtest asks how the rules would have performed on history. A forward test asks how they perform on prices arriving now, with no possibility of peeking at the outcome. A strategy worth trusting passes both, and the gap between the two results is itself one of the most useful numbers you can measure.</p>
+      <h2>The two tests side by side</h2>
+      <table>
+        <thead><tr><th></th><th>Backtesting</th><th>Forward testing</th></tr></thead>
+        <tbody>
+          <tr><td>Data</td><td>Historical candles</td><td>Live prices as they arrive</td></tr>
+          <tr><td>Speed</td><td>Years in minutes</td><td>Real time: days or weeks</td></tr>
+          <tr><td>Best use</td><td>Rejecting weak ideas quickly</td><td>Confirming the survivors</td></tr>
+          <tr><td>Main risk</td><td>Overfitting, look-ahead bias</td><td>Too short a sample</td></tr>
+          <tr><td>Hindsight</td><td>Built in: you know what happened</td><td>Impossible: the future is unknown</td></tr>
+          <tr><td>Money at stake</td><td>None</td><td>None when the balance is virtual</td></tr>
+        </tbody>
+      </table>
+      <h2>What backtesting is good for</h2>
+      <p>Speed. In an afternoon you can check an idea over several years of bull, bear and sideways markets, throw away the ninety ideas that never worked and keep the ten that might. No forward test can match that, which is why backtesting always comes first. The <a href="/how-to-backtest-a-crypto-trading-bot/">step-by-step backtesting guide</a> covers the method.</p>
+      <h2>What forward testing adds</h2>
+      <ul>
+        <li><strong>No hindsight.</strong> You cannot tune to prices that have not happened.</li>
+        <li><strong>Real behaviour of the code.</strong> Bugs that a backtest hides, such as a signal computed on an unfinished candle, show up as soon as the bot runs on a live feed.</li>
+        <li><strong>Discipline.</strong> Watching a bot lose for four days in a row, under fixed limits, tells you more about whether you would keep it running than any equity curve.</li>
+      </ul>
+      <p>Forward testing with a virtual balance is sometimes called demo trading. The principle is the same: live market, no real money.</p>
+      <h2>How long should each test run?</h2>
+      <p>Backtest across several years if your timeframe allows it, covering at least one rise, one fall and one flat stretch. Forward test long enough to see a meaningful number of trades. For a bot that trades a few times a day, a week or two gives a first reading. Slower strategies need longer. On Crypto Robot, level 1 runs between 5 and 10 days, and the next levels continue the test with smaller targets.</p>
+      <h2>Comparing the two results</h2>
+      <p>Expect the forward test to look worse than the backtest. Some gap is normal. What matters is its size and its source.</p>
+      <ul>
+        <li><strong>Similar trade frequency, a slightly lower return:</strong> healthy. Costs and normal variance explain it.</li>
+        <li><strong>Far more or far fewer trades than the backtest predicted:</strong> the code behaves differently on live data. Look for a bug before anything else.</li>
+        <li><strong>Drawdown much deeper than the backtest's worst:</strong> the backtest was overfitted or tested on too narrow a period.</li>
+        <li><strong>A single big trade carries all the profit:</strong> treat it as luck until it repeats.</li>
+      </ul>
+      <h2>A simple workflow</h2>
+      <ol>
+        <li>Backtest on 70% of the history, tune, then run once on the remaining 30%.</li>
+        <li>Note the expected trade frequency, the worst day and the maximum drawdown.</li>
+        <li>Forward test on live prices with a virtual balance and hard loss limits.</li>
+        <li>Compare with the numbers from step 2. Investigate any large gap before changing parameters.</li>
+      </ol>
+      <h2>Forward testing on Crypto Robot</h2>
+      <p>Crypto Robot is built for step 3. Each bot gets a virtual $10,000 on live crypto prices and must clear three levels:</p>
+      <table>
+        <thead><tr><th>Level</th><th>Target</th><th>Min. days</th><th>Max. days</th><th>Max. drawdown</th><th>Daily drawdown</th></tr></thead>
+        <tbody>
+          <tr><td>Level 1</td><td>+10%</td><td>5</td><td>10</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 2</td><td>+5%</td><td>5</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+          <tr><td>Level 3</td><td>+5%</td><td>None</td><td>No limit</td><td>-10%</td><td>-5%</td></tr>
+        </tbody>
+      </table>
+      <p>Falling 5% in a single day or 10% from the start ends the challenge, which is a strict, objective check against the drawdown your backtest predicted. It is free and asks for no card or deposit.</p>
+      <h2>Frequently asked questions</h2>
+      <h3>What is the difference between backtesting and forward testing?</h3>
+      <p>Backtesting runs a strategy on historical data to see how it would have performed. Forward testing runs it on live prices as they arrive, so the outcome cannot be known in advance.</p>
+      <h3>Is forward testing better than backtesting?</h3>
+      <p>Each does a different job. Backtesting quickly rejects weak ideas over years of data; forward testing confirms the survivors without hindsight. A robust strategy needs both.</p>
+      <h3>How long should I forward test a trading bot?</h3>
+      <p>Long enough for a meaningful number of trades. For a bot trading several times a day, one to two weeks gives a first reading; slower strategies need longer.</p>
+      <h3>Can I forward test without risking money?</h3>
+      <p>Yes. Run the bot on live prices with a virtual balance. Crypto Robot gives each bot a virtual $10,000 for free.</p>
+      <div class="page-cta">
+        <p>Your backtest made a prediction. Check it on live prices.</p>
+        <a class="btn" href="/#start">Start a live test <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <h2>Related guides</h2>
+      <ul><li><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a></li><li><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a></li><li><a href="/backtesting-mistakes/">Backtesting mistakes</a></li><li><a href="/crypto-trading-robot/">Crypto trading robots</a></li></ul>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="/how-to-backtest-a-crypto-trading-bot/">How to backtest a crypto bot</a><a href="/free-crypto-backtesting-tools/">Free backtesting tools</a><a href="/backtesting-mistakes/">Backtesting mistakes</a><a href="/forward-testing-vs-backtesting/">Forward testing vs backtesting</a><a href="/crypto-trading-robot/">Crypto trading robots</a><a href="/contact/">Contact</a><a href="/terms/">Terms</a><a href="/privacy-policy/">Privacy</a><a href="/legal-notice/">Legal notice</a><a href="/privacy-policy/#cookies" data-cookie-settings>Cookie settings</a></nav>
+    <p class="copy">&copy; 2026 Crypto Robot</p>
+    <small>Educational simulator. All balances are virtual and no real money is traded. Nothing on this site is financial advice. Crypto-assets are high risk and results on virtual money do not predict real results. Sign-up is handled by our partner AFFCOIN, and we may receive a commission when you open an account.</small>
+  </div>
+</footer>
+</body>
+</html>
