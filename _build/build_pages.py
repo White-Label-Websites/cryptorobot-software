@@ -498,7 +498,6 @@ guide("crypto-trading-robot",
   [
     ("What is a crypto trading robot?", "Software that places buy and sell orders automatically according to rules written in advance. Robot, bot and algorithm mean the same thing in this context."),
     ("Do crypto trading robots really work?", "Some strategies make money in some markets, and many lose. A robot is only as good as its rules and risk limits, which is why it should be backtested and then run live on virtual money first."),
-    ("How can I tell if a trading robot is a scam?", "Be wary of guaranteed returns, deposits with a broker chosen for you, secret rules, backtest-only results and celebrity endorsements."),
     ("Is Crypto Robot a trading robot I can buy?", "No. Crypto Robot is a free testing environment. You bring the robot, and it runs on live prices with a virtual $10,000 under fixed drawdown limits."),
   ],
   "Have a trading robot? See how it behaves on a live market.",
